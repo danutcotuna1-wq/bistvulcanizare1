@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vulcanizare Bist – schimb cauciucuri, echilibrare, geometrie</title>
+<meta name="description" content="Vulcanizare Bist: schimb de cauciucuri, echilibrare și geometrie pentru mașina ta. Sună sau scrie pe WhatsApp și stabilim ora.">
+<script>document.documentElement.className+=' js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F0E9; --surface:#EBE5DB; --ink:#16130F; --muted:#5A5349; --line:#CEC5B6; --gold:#8A6628;
+  --d-bg:#0B0A09; --d-ink:#EEE8DD; --d-muted:#A9A194; --d-gold:#CBA66C; --d-line:#2F2A24;
+  --serif:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --sans:"Jost","Helvetica Neue",Arial,system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0E0D0C;--surface:#171513;--ink:#EEE8DD;--muted:#A39B8E;--line:#2E2A25;--gold:#CBA66C;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0E0D0C;--surface:#171513;--ink:#EEE8DD;--muted:#A39B8E;--line:#2E2A25;--gold:#CBA66C;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.02}
+.eyebrow{display:flex;align-items:center;gap:1rem;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";width:2.6rem;height:1px;background:currentColor}
+
+/* dark hero + contact */
+.dark{background:radial-gradient(60% 80% at var(--mx,72%) var(--my,38%),#1E1A15 0%,var(--d-bg) 70%);color:var(--d-ink);--gold:var(--d-gold)}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0}
+.logo{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--serif);font-weight:600;font-size:2rem;letter-spacing:.26em}
+.logo small{font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;color:var(--d-gold);margin-top:.3rem}
+.btn{display:inline-block;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;padding:1rem 1.7rem;border:1px solid var(--d-gold);background:var(--d-gold);color:#14100A;transition:transform .25s,background .25s,color .25s}
+.btn:hover{transform:translateY(-2px);background:#DDBB82}
+.btn.alt{background:transparent;color:var(--d-ink);border-color:rgba(238,232,221,.4)}
+.btn.alt:hover{background:rgba(238,232,221,.08)}
+.hero{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 4rem}
+.hero h1{font-size:clamp(3rem,9.5vw,6.2rem);margin:1.4rem 0 0}
+.hero h1 .l{display:block}
+.hero h1 em{color:var(--d-gold);font-style:italic}
+.hero p{max-width:30rem;color:var(--d-muted);font-size:1.1rem;margin:1.5rem 0 2.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.wheelwrap{position:relative;justify-self:center;width:min(100%,26rem)}
+.wheelwrap::before{content:"";position:absolute;inset:-9%;border:1px solid rgba(203,166,108,.22);border-radius:50%}
+.wheel{display:block;width:100%;cursor:pointer;position:relative}
+.wheel .rot{transform-origin:100px 100px;animation:spinin 1.9s cubic-bezier(.12,.7,.1,1) backwards;transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}
+@keyframes spinin{from{transform:rotate(-540deg)}}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.js .hero .eyebrow,.js .hero h1 .l,.js .hero p,.js .hero .cta{opacity:0;animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.js .hero h1 .l:nth-child(2){animation-delay:.14s}
+.js .hero p{animation-delay:.32s}
+.js .hero .cta{animation-delay:.45s}
+.band{overflow:hidden;white-space:nowrap;border-top:1px solid var(--d-line);border-bottom:1px solid var(--d-line)}
+.band>div{display:inline-flex;animation:slide 45s linear infinite}
+.band span{font-size:.76rem;letter-spacing:.34em;text-transform:uppercase;color:var(--d-muted);padding:1.1rem 0}
+.band span::after{content:"";display:inline-block;width:6px;height:6px;background:var(--d-gold);transform:rotate(45deg);margin:0 2rem;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:5rem 0}
+h2{font-size:clamp(2.4rem,5.5vw,3.8rem);margin:1rem 0 2.8rem}
+.svc{position:relative;display:grid;grid-template-columns:1fr;gap:1rem 2.5rem;padding:2.2rem 0;border-top:1px solid var(--line)}
+.svc:last-of-type{border-bottom:1px solid var(--line)}
+.num{font-family:var(--serif);font-style:italic;font-size:2.6rem;color:var(--gold);line-height:1}
+.svc h3{font-size:2.3rem;margin-bottom:.7rem}
+.svc p{margin:0 0 .8rem;max-width:36rem}
+.svc small{display:block;color:var(--muted);font-size:.95rem;max-width:36rem}
+.svc small b{color:var(--ink);font-weight:500}
+.js .svc.rv{border-top-color:transparent}
+.js .svc.rv::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.js .svc.rv.in::before{transform:none}
+.js .svc.rv>*{opacity:0;transform:translateY(22px);transition:opacity .8s .2s,transform .8s .2s cubic-bezier(.2,.8,.2,1)}
+.js .svc.rv.in>*{opacity:1;transform:none}
+.art svg{width:100%;max-width:14rem;height:auto;display:block;color:var(--gold);fill:none;stroke:currentColor;stroke-width:1.4}
+.art .tire,.art .spin,.art .fw{transition:transform 1.3s .4s cubic-bezier(.2,.8,.2,1),opacity .7s .4s}
+.art .spin{transform-origin:120px 80px;transition-duration:2.4s;transition-timing-function:cubic-bezier(.1,.7,.1,1)}
+.art .fw{transform-box:fill-box;transform-origin:center;fill:currentColor}
+.art .wt{fill:currentColor}
+.js .art .tire{transform:translateX(-90px);opacity:0}
+.js .art .fw.l{transform:rotate(-14deg)}
+.js .art .fw.r{transform:rotate(14deg)}
+.js .svc.in .art .tire,.js .svc.in .art .fw{transform:none;opacity:1}
+.js .svc.in .art .spin{transform:rotate(720deg)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:2rem;counter-reset:s}
+.steps li{counter-increment:s;border-top:1px solid var(--line);padding-top:1.2rem}
+.steps li::before{content:"0" counter(s);font-family:var(--serif);font-style:italic;font-size:2.4rem;color:var(--gold);display:block;line-height:1;margin-bottom:.8rem}
+.steps b{display:block;font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:.3rem}
+.steps span{color:var(--muted)}
+.js .steps li.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .steps li.rv.in{opacity:1;transform:none}
+details{border-top:1px solid var(--line);padding:1.2rem 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;font-family:var(--serif);font-weight:600;font-size:1.4rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:.55rem;height:.55rem;margin-top:.55rem;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);transition:transform .3s}
+details[open] summary::after{transform:rotate(225deg)}
+details p{margin:.7rem 0 0;color:var(--muted);max-width:40rem}
+details[open] p{animation:up .45s both}
+.contact{padding:5rem 0}
+.contact .grid{display:grid;grid-template-columns:1fr;gap:3rem}
+.contact h2{margin-bottom:1.5rem}
+.big{font-family:var(--serif);font-weight:500;font-size:clamp(2.8rem,9vw,4.6rem);color:var(--d-gold);text-decoration:none;display:block;line-height:1.05;margin-bottom:1.2rem}
+.contact p{color:var(--d-muted);margin:0 0 2rem;max-width:26rem}
+dl{margin:0;display:grid;gap:1.6rem}
+dt{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--d-gold);margin-bottom:.3rem}
+dd{margin:0}
+footer{padding:1.6rem 0 6rem;color:var(--muted);font-size:.85rem;letter-spacing:.08em}
+.callbar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));background:var(--d-bg);border-top:1px solid var(--d-line);z-index:5}
+.callbar .btn{flex:1;text-align:center;padding:.9rem .5rem}
+@media (min-width:52rem){
+  .hero{grid-template-columns:1.15fr .85fr;padding:3.5rem 0 6rem}
+  .svc{grid-template-columns:4rem 1fr 14rem;align-items:center}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .contact .grid{grid-template-columns:1.2fr 1fr}
+  .callbar{display:none}
+  footer{padding-bottom:1.6rem}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .hero .eyebrow,.js .hero h1 .l,.js .hero p,.js .hero .cta{opacity:1}}
+</style>
+</head>
+<body>
+<div class="dark">
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#" aria-label="Vulcanizare Bist"><b>BIST</b><small>Vulcanizare</small></a>
+      <a class="btn" href="tel:+40700000000">Sună</a>
+    </header>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Cauciucuri · Echilibrare · Geometrie</div>
+        <h1><span class="l">Precizie</span><span class="l"><em>la fiecare rotație.</em></span></h1>
+        <p>Schimb de cauciucuri, echilibrare și geometrie, executate atent, pentru mașina ta. Spune-ne ce mașină ai și îți dăm ora.</p>
+        <div class="cta">
+          <a class="btn" href="tel:+40700000000">Sună acum</a>
+          <a class="btn alt" href="https://wa.me/40700000000">WhatsApp</a>
+        </div>
+      </div>
+      <div class="wheelwrap">
+        <svg class="wheel" viewBox="0 0 200 200" role="img" aria-label="Ilustrație cu o jantă">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1E4C6"/><stop offset=".55" stop-color="#B8904F"/><stop offset="1" stop-color="#6B5128"/></linearGradient>
+            <radialGradient id="g2"><stop offset="0" stop-color="#2A2622"/><stop offset="1" stop-color="#0E0D0C"/></radialGradient>
+            <path id="sp" d="M96.5 80 L93 34 Q100 30 107 34 L103.5 80 Z"/>
+          </defs>
+          <g class="rot" id="rot">
+            <circle cx="100" cy="100" r="94" fill="#141210"/>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="#2B2722" stroke-width="7" stroke-dasharray="2 6"/>
+            <circle cx="100" cy="100" r="72" fill="url(#g1)"/>
+            <circle cx="100" cy="100" r="67" fill="url(#g2)"/>
+            <g fill="url(#g1)">
+              <use href="#sp"/><use href="#sp" transform="rotate(36 100 100)"/><use href="#sp" transform="rotate(72 100 100)"/><use href="#sp" transform="rotate(108 100 100)"/><use href="#sp" transform="rotate(144 100 100)"/>
+              <use href="#sp" transform="rotate(180 100 100)"/><use href="#sp" transform="rotate(216 100 100)"/><use href="#sp" transform="rotate(252 100 100)"/><use href="#sp" transform="rotate(288 100 100)"/><use href="#sp" transform="rotate(324 100 100)"/>
+            </g>
+            <circle cx="100" cy="100" r="20" fill="url(#g1)"/>
+            <circle cx="100" cy="100" r="13" fill="#0E0D0C"/>
+            <circle cx="100" cy="100" r="4" fill="url(#g1)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="band" aria-hidden="true"><div><span>Schimb cauciucuri</span><span>Echilibrare</span><span>Geometrie</span><span>Schimb cauciucuri</span><span>Echilibrare</span><span>Geometrie</span><span>Schimb cauciucuri</span><span>Echilibrare</span><span>Geometrie</span><span>Schimb cauciucuri</span><span>Echilibrare</span><span>Geometrie</span></div></div>
+</div>
+
+<section id="servicii">
+  <div class="wrap">
+    <div class="eyebrow">Servicii</div>
+    <h2>Ce facem</h2>
+    <div class="svc">
+      <div class="num">01</div>
+      <div>
+        <h3>Schimb cauciucuri</h3>
+        <p>Demontăm și montăm cauciucurile pe jante, schimbăm ventilele și verificăm presiunea. Vii cu roțile sau cu mașina.</p>
+        <small><b>Ai nevoie când:</b> treci pe cauciucuri de iarnă sau de vară, ai un cauciuc uzat, crăpat sau cu pană.</small>
+      </div>
+      <div class="art"><svg viewBox="0 0 240 160" aria-hidden="true"><circle cx="120" cy="80" r="42"/><g><line x1="120" y1="80" x2="120" y2="42"/><line x1="120" y1="80" x2="153" y2="99"/><line x1="120" y1="80" x2="87" y2="99"/></g><circle cx="120" cy="80" r="8"/><g class="tire"><circle cx="120" cy="80" r="58"/><circle cx="120" cy="80" r="70"/><circle cx="120" cy="80" r="64" stroke-width="8" stroke-dasharray="2 7" opacity=".55"/></g></svg></div>
+    </div>
+    <div class="svc">
+      <div class="num">02</div>
+      <div>
+        <h3>Echilibrare</h3>
+        <p>Fixăm greutăți pe jantă ca roata să se rotească uniform. Volanul nu mai vibrează, iar cauciucurile se uzează egal.</p>
+        <small><b>Ai nevoie când:</b> simți vibrații în volan sau în scaun, mai ales la viteză, sau tocmai ai montat cauciucuri noi.</small>
+      </div>
+      <div class="art"><svg viewBox="0 0 240 160" aria-hidden="true"><g class="spin"><circle cx="120" cy="80" r="64"/><circle cx="120" cy="80" r="48"/><g><line x1="120" y1="80" x2="120" y2="40"/><line x1="120" y1="80" x2="158" y2="68"/><line x1="120" y1="80" x2="144" y2="112"/><line x1="120" y1="80" x2="96" y2="112"/><line x1="120" y1="80" x2="82" y2="68"/></g><rect class="wt" x="113" y="28" width="14" height="9" rx="2"/></g><circle cx="120" cy="80" r="8"/></svg></div>
+    </div>
+    <div class="svc">
+      <div class="num">03</div>
+      <div>
+        <h3>Geometrie</h3>
+        <p>Reglăm unghiurile roților după datele producătorului, ca mașina să meargă drept și cauciucurile să țină mai mult.</p>
+        <small><b>Ai nevoie când:</b> mașina trage într-o parte, volanul stă strâmb sau cauciucurile se uzează pe margine.</small>
+      </div>
+      <div class="art"><svg viewBox="0 0 240 160" aria-hidden="true"><rect x="92" y="28" width="56" height="104" rx="12"/><rect class="fw l" x="66" y="34" width="16" height="36" rx="3"/><rect class="fw r" x="158" y="34" width="16" height="36" rx="3"/><rect class="fw" x="66" y="92" width="16" height="36" rx="3"/><rect class="fw" x="158" y="92" width="16" height="36" rx="3"/><line x1="120" y1="8" x2="120" y2="152" stroke-dasharray="7 6"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Programare</div>
+    <h2>Cum decurge o vizită</h2>
+    <ol class="steps">
+      <li><b>Suni sau scrii</b><span>Ne spui marca mașinii, dimensiunea jantelor și ce ai nevoie.</span></li>
+      <li><b>Stabilim ora</b><span>Îți spunem când ai loc și cât durează lucrarea.</span></li>
+      <li><b>Vii și pleci liniștit</b><span>Facem lucrarea și îți arătăm ce am reglat înainte să pleci.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Întrebări</div>
+    <h2>Răspunsuri rapide</h2>
+    <details><summary>Când trec pe cauciucuri de iarnă?</summary><p>Regula uzuală: când temperaturile ajung constant sub 7 °C. Cauciucurile de vară se întăresc la frig și țin drumul mai prost.</p></details>
+    <details><summary>Când trebuie să fac geometria?</summary><p>După ce lovești un bordură sau o groapă mare, după lucrări la suspensie, când montezi cauciucuri noi sau dacă mașina trage într-o parte.</p></details>
+    <details><summary>Cât durează o lucrare?</summary><p>Depinde de mașină și de dimensiunea jantelor. Îți spunem timpul exact când stabilim programarea.</p></details>
+    <details><summary>Trebuie să mă programez?</summary><p>Sună sau scrie pe WhatsApp și îți spunem când ai loc. Așa nu stai la coadă.</p></details>
+  </div>
+</section>
+
+<div class="dark contact" id="contact">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Programează-te</h2>
+      <a class="big" href="tel:+40700000000">07xx xxx xxx</a>
+      <p>Spune-ne marca mașinii și ce ai nevoie. Îți răspundem cu ora disponibilă.</p>
+      <div class="cta">
+        <a class="btn" href="tel:+40700000000">Sună acum</a>
+        <a class="btn alt" href="https://wa.me/40700000000">WhatsApp</a>
+      </div>
+    </div>
+    <dl>
+      <div><dt>Adresă</dt><dd>Strada Exemplu 12, orașul tău</dd></div>
+      <div><dt>Program</dt><dd>Luni–Vineri 08:00–18:00<br>Sâmbătă 08:00–14:00</dd></div>
+    </dl>
+  </div>
+</div>
+
+<footer><div class="wrap">© Vulcanizare Bist</div></footer>
+
+<div class="callbar">
+  <a class="btn" href="tel:+40700000000">Sună acum</a>
+  <a class="btn alt" href="https://wa.me/40700000000">WhatsApp</a>
+</div>
+
+<script>
+(function(){
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var els=[].slice.call(document.querySelectorAll('.svc,.steps li'));
+els.forEach(function(e){e.classList.add('rv');if(e.tagName==='LI'){e.style.transitionDelay=([].indexOf.call(e.parentNode.children,e)*.14)+'s'}});
+if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
+else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.25,rootMargin:'0px 0px -8% 0px'});els.forEach(function(e){io.observe(e)})}
+var rot=document.getElementById('rot'),a=0;
+if(rot){rot.parentNode.addEventListener('click',function(){a+=360;rot.style.transform='rotate('+a+'deg)'})}
+var d=document.querySelector('.dark');
+if(d&&!rm){d.addEventListener('pointermove',function(e){var r=d.getBoundingClientRect();d.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');d.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})}
+})();
+</script>
+</body>
+</html>
